@@ -6,5 +6,7 @@ type Props = {
 };
 
 export const Screen = ({children}: Props) => (
-  <View className="flex flex-1 justify-center bg-white px-6">{children}</View>
+  <View className="flex flex-1 justify-center bg-white dark:bg-charcoal-850 px-6">
+    {children}
+  </View>
 );

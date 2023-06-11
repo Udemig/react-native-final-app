@@ -13,8 +13,6 @@ export default function App() {
     console.log('useEffect,status', status);
   }, [status]);
 
-  console.log('status', status);
-
   return (
     <NavigationContainer>
       {status === 'signIn' ? <TabNavigator /> : <AuthNavigator />}
