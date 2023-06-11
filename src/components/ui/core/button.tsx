@@ -1,39 +1,83 @@
 import React from 'react';
-import {TouchableOpacity} from './touchableOpacity';
-import {Text} from './text';
-import {TouchableOpacityProps} from 'react-native';
+import type {TouchableOpacityProps} from 'react-native';
 
-export const buttonVariants = {
+import {Text} from './text';
+import {TouchableOpacity} from './touchableOpacity';
+import {ActivityIndicator} from './activityIndicator';
+
+type Variant = {
+  container: string;
+  label: string;
+  indicator: string;
+};
+type VariantName = 'defaults' | 'primary' | 'outline' | 'secondary';
+type BVariant = {
+  [key in VariantName]: Variant;
+};
+
+export const buttonVariants: BVariant = {
   defaults: {
-    container: 'flew-row items-center justify-center',
-    label: 'text-white',
+    container:
+      'flex-row items-center justify-center rounded-md px-12 py-3 my-2',
+    label: 'text-[16px] font-medium text-white',
+    indicator: 'text-white h-[30px]',
   },
   primary: {
     container: 'bg-primary-500',
-    label: 'text-black',
+    label: 'text-charcoal-100',
+    indicator: 'text-inherit',
   },
-  secondary: {container: 'bg-primary-500', label: 'text-white'},
-  outline: {container: 'bg-primary-500 border', label: 'text-black'},
+  secondary: {
+    container: 'bg-yellow-500',
+    label: 'text-secondary-600',
+    indicator: 'text-black',
+  },
+  outline: {
+    container: 'border border-neutral-400',
+    label: 'text-black dark:text-charcoal-100',
+    indicator: 'text-black',
+  },
 };
 
-interface IButtonProps extends TouchableOpacityProps {
-  label: string;
-  variant?: string;
+interface Props extends TouchableOpacityProps {
+  variant?: VariantName;
+  label?: string;
+  loading?: boolean;
 }
 
 export const Button = ({
   label,
+  loading = false,
   variant = 'primary',
+  disabled = false,
   ...props
-}: IButtonProps) => {
+}: Props) => {
   return (
     <TouchableOpacity
-      className={`${buttonVariants.defaults.container} ${buttonVariants[variant].container}`}
+      disabled={disabled || loading}
+      className={`
+    ${buttonVariants.defaults.container}
+     ${buttonVariants[variant].container}
+     ${disabled ? 'opacity-50' : ''}
+    `}
       {...props}>
-      <Text
-        className={`${buttonVariants.defaults.label} ${buttonVariants[variant].label}`}>
-        {label}
-      </Text>
+      {loading ? (
+        <ActivityIndicator
+          size="small"
+          className={`
+          ${buttonVariants.defaults.indicator}
+           ${buttonVariants[variant].indicator}
+          `}
+        />
+      ) : (
+        <Text
+          className={`
+          ${buttonVariants.defaults.label}
+           ${buttonVariants[variant].label}
+          `}>
+          {label}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
