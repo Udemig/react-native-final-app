@@ -2,6 +2,7 @@ import {styled} from 'nativewind';
 import React from 'react';
 import type {TextProps} from 'react-native';
 import {StyleSheet, Text as NNText} from 'react-native';
+import fonts from '../theme/fonts';
 
 const SText = styled(NNText);
 

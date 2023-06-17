@@ -1,4 +1,3 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import {getToken} from '@store/auth/utils';
 import {Button} from '@components/ui/core/button';

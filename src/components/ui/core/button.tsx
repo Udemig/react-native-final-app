@@ -28,9 +28,9 @@ export const buttonVariants: BVariant = {
     indicator: 'text-inherit',
   },
   secondary: {
-    container: 'bg-yellow-500',
-    label: 'text-secondary-600',
-    indicator: 'text-black',
+    container: 'bg-neutral-900',
+    label: 'text-neutral-50',
+    indicator: 'text-neutral-50',
   },
   outline: {
     container: 'border border-neutral-400',

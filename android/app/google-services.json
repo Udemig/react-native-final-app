@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "895775755469",
+    "firebase_url": "https://udemig-a5f7c-default-rtdb.firebaseio.com",
+    "project_id": "udemig-a5f7c",
+    "storage_bucket": "udemig-a5f7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895775755469:android:1ab60eac63710ead182d84",
+        "android_client_info": {
+          "package_name": "com.finalapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4yc5amSmddW5Nmikodr85HQFo5izqHO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895775755469:android:3df3e81ef4fba817182d84",
+        "android_client_info": {
+          "package_name": "com.firebasereactnative"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4yc5amSmddW5Nmikodr85HQFo5izqHO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

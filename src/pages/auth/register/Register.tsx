@@ -27,7 +27,7 @@ const schema = z.object({
     .min(6, 'Password must be at least 6 characters'),
 });
 
-export default function Login() {
+export default function Register() {
   const navigation = useNavigation();
 
   const {t} = useTranslation();
@@ -56,7 +56,7 @@ export default function Login() {
       const {email, password} = getValues();
 
       auth()
-        .signInWithEmailAndPassword(email, password)
+        .createUserWithEmailAndPassword(email, password)
         .then(response => {
           console.log('User account created & signed in!', response);
 
@@ -74,8 +74,6 @@ export default function Login() {
           });
         })
         .catch(error => {
-          console.log('Error', error);
-
           let message = '';
 
           if (error.code === 'auth/email-already-in-use') {
@@ -86,36 +84,21 @@ export default function Login() {
             message = 'That email address is invalid!';
           }
 
-          if (error.code === 'auth/wrong-password') {
-            message = 'That password is invalid!';
-          }
-
           showMessage({type: 'danger', message});
+
+          console.error(error);
         });
     }
   };
 
   return (
     <Screen>
-      <Title text={t('signIn.title')} />
+      <Title text={t('signUp.title')} />
 
       <ControlledInput control={control} name="email" label="Email" />
       <ControlledInput control={control} name="password" label="Password" />
 
-      <Button label="Login" onPress={() => onLogin()} />
-      <Button
-        label="Dil Değiştir"
-        variant="outline"
-        onPress={() => changeLanguage(i18n.language === 'en' ? 'tr' : 'en')}
-      />
-
-      <Button
-        variant="secondary"
-        label="Register"
-        onPress={() => {
-          navigation.navigate(AppScreens.Register);
-        }}
-      />
+      <Button label="Register" onPress={() => onLogin()} />
     </Screen>
   );
 }
