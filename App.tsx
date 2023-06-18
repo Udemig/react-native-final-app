@@ -9,6 +9,9 @@ import {
   notificationListener,
   requestUserPermission,
 } from '@utils/notifications';
+import SplashScreen from 'react-native-splash-screen';
+import {StatusBar} from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 export default function App() {
   const {status} = _useAuth();
@@ -17,6 +20,8 @@ export default function App() {
     requestUserPermission();
     getFcmToken();
     notificationListener();
+
+    SplashScreen.hide();
   }, []);
 
   useEffect(() => {
@@ -24,9 +29,12 @@ export default function App() {
   }, [status]);
 
   return (
-    <NavigationContainer>
-      <FlashMessage position="top" />
-      {status === 'signIn' ? <TabNavigator /> : <AuthNavigator />}
-    </NavigationContainer>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <StatusBar barStyle="light-content" backgroundColor="#000000" />
+        <FlashMessage position="top" />
+        {status === 'signIn' ? <TabNavigator /> : <AuthNavigator />}
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
